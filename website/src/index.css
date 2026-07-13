@@ -570,6 +570,8 @@ h1, h2, h3 { line-height: 1.1; letter-spacing: -0.02em; font-weight: 800; }
   .section-sub { font-size: 16px; }
   .hero-cta .btn, .nav-mobile a.btn { width: 100%; }
   .hero-cta { flex-direction: column; }
+  .hero-art { display: none; }
+  .hero { padding-top: 32px; }
   .notify { padding: 24px; }
   .compare-card, .analysis-card, .overview-col, .step, .feat, .dl-card, .sport-card .body, .persport { padding-left: 22px; padding-right: 22px; }
 }
