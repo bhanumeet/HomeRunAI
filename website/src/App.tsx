@@ -23,9 +23,9 @@ function Nav() {
         <nav className="nav-links">
           <a href="#problem">Why</a>
           <a href="#how">How it works</a>
+          <a href="#sports">Sports</a>
           <a href="#replay">Replay</a>
           <a href="#analysis">Analysis</a>
-          <a href="#sports">Sports</a>
           <a href="#download">Download</a>
         </nav>
         <div className="nav-cta">
@@ -644,10 +644,10 @@ export default function App() {
         <Hero />
         <Problem />
         <HowItWorks />
-        <Capabilities />
-        <Analysis />
         <Sports />
         <Features />
+        <Capabilities />
+        <Analysis />
         <Downloads />
       </main>
       <Footer />
