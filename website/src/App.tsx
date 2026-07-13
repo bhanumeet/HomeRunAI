@@ -1,10 +1,11 @@
-import { useState } from 'react'
+import { useState, type ReactNode } from 'react'
 import {
   SoccerBall, Baseball, Football, Basketball,
   SoccerField, BaseballField, FootballField, BasketballCourt,
   Phone, Laptop,
   WindowsIcon, AppleIcon, AppStoreBadge,
   IconAI, IconSwitch, IconPhoneUp, IconBolt, IconWifi, IconRec, IconMic, IconTruck, IconWallet,
+  IconChart, IconHeatmap, IconRun, IconTarget, IconClip, IconTrend, IconReplay,
 } from './components/art'
 
 function Logo() {
@@ -22,8 +23,9 @@ function Nav() {
         <nav className="nav-links">
           <a href="#problem">Why</a>
           <a href="#how">How it works</a>
+          <a href="#replay">Replay</a>
+          <a href="#analysis">Analysis</a>
           <a href="#sports">Sports</a>
-          <a href="#features">Features</a>
           <a href="#download">Download</a>
         </nav>
         <div className="nav-cta">
@@ -249,6 +251,236 @@ function HowItWorks() {
   )
 }
 
+/* ---------- Capability showcase rows ---------- */
+
+function Showcase({ id, flip, eyebrow, title, body, bullets, visual }: {
+  id: string; flip?: boolean; eyebrow: string; title: string; body: string;
+  bullets: { ic: ReactNode; t: string }[]; visual: ReactNode;
+}) {
+  return (
+    <div className={`showcase ${flip ? 'flip' : ''}`} id={id}>
+      <div className="showcase-text">
+        <span className="eyebrow">{eyebrow}</span>
+        <h2 className="showcase-title">{title}</h2>
+        <p className="showcase-body">{body}</p>
+        <ul className="showcase-list">
+          {bullets.map((b, i) => (
+            <li key={i}><span className="li-ic">{b.ic}</span>{b.t}</li>
+          ))}
+        </ul>
+      </div>
+      <div className="showcase-visual">{visual}</div>
+    </div>
+  )
+}
+
+function SwitchVisual() {
+  return (
+    <svg viewBox="0 0 400 300" className="viz" aria-hidden>
+      <rect x="0" y="0" width="400" height="300" rx="24" fill="#EAF4E4" />
+      {/* four incoming feeds */}
+      {[
+        { x: 24, y: 26, c: '#A9D69C' }, { x: 24, y: 100, c: '#B7DCEC' },
+        { x: 24, y: 174, c: '#E4B896' }, { x: 24, y: 248, c: '#8EC48A', live: true },
+      ].map((t, i) => (
+        <g key={i}>
+          <rect x={t.x} y={t.y} width="96" height="58" rx="8" fill={t.c}
+            stroke={t.live ? '#F2A488' : '#CFE7C4'} strokeWidth={t.live ? 4 : 2} />
+          {t.live && <circle cx={t.x + 84} cy={t.y + 12} r="4" fill="#F2A488" />}
+          {/* confidence bar */}
+          <rect x={t.x} y={t.y + 62} width="96" height="6" rx="3" fill="#Dfe7d8" />
+          <rect x={t.x} y={t.y + 62} width={t.live ? 92 : 20 + i * 14} height="6" rx="3" fill={t.live ? '#F2A488' : '#A9D69C'} />
+        </g>
+      ))}
+      {/* arrow to program */}
+      <path d="M132 277 C 175 277, 175 150, 214 150" stroke="#5E9A5E" strokeWidth="3" fill="none" strokeDasharray="1 9" strokeLinecap="round" />
+      {/* live program */}
+      <rect x="214" y="40" width="162" height="120" rx="12" fill="#8EC48A" stroke="#F2A488" strokeWidth="4" />
+      <rect x="266" y="196" width="58" height="26" rx="13" fill="#F2A488" />
+      <circle cx="282" cy="209" r="4" fill="#FBFAF4" />
+      <text x="291" y="213" fontFamily="Inter" fontSize="12" fontWeight="800" fill="#FBFAF4">LIVE</text>
+      <text x="214" y="250" fontFamily="Inter" fontSize="13" fontWeight="700" fill="#3C5A3E">Live program · best angle</text>
+    </svg>
+  )
+}
+
+function CommentaryVisual() {
+  return (
+    <svg viewBox="0 0 400 300" className="viz" aria-hidden>
+      <rect x="0" y="0" width="400" height="300" rx="24" fill="#EAF4E4" />
+      <rect x="30" y="34" width="340" height="150" rx="12" fill="#A9D69C" />
+      <circle cx="200" cy="100" r="30" fill="none" stroke="#FBFAF4" strokeWidth="3" />
+      {/* lower-third caption bar */}
+      <rect x="30" y="150" width="340" height="34" rx="8" fill="#3C5A3E" opacity="0.9" />
+      <circle cx="52" cy="167" r="9" fill="#F2A488" />
+      <path d="M52 162v10M48 167h8" stroke="#FBFAF4" strokeWidth="2" strokeLinecap="round" />
+      <rect x="70" y="163" width="150" height="7" rx="3.5" fill="#CFE7C4" />
+      {/* waveform */}
+      <g fill="#F6E2A0">
+        {[0, 1, 2, 3, 4, 5, 6, 7, 8].map((i) => {
+          const h = [10, 20, 30, 16, 26, 12, 22, 30, 14][i]
+          return <rect key={i} x={250 + i * 12} y={167 - h / 2} width="6" height={h} rx="3" />
+        })}
+      </g>
+      {/* speech bubble */}
+      <rect x="40" y="212" width="320" height="56" rx="14" fill="#FBFAF4" stroke="#E6E2D4" strokeWidth="2" />
+      <rect x="58" y="228" width="220" height="8" rx="4" fill="#CFE7C4" />
+      <rect x="58" y="244" width="160" height="8" rx="4" fill="#CFE7C4" />
+      <text x="300" y="246" fontFamily="Inter" fontSize="13" fontWeight="800" fill="#5E9A5E">AI · play-by-play</text>
+    </svg>
+  )
+}
+
+function ReplayVisual() {
+  return (
+    <svg viewBox="0 0 400 300" className="viz" aria-hidden>
+      <rect x="0" y="0" width="400" height="300" rx="24" fill="#EAF4E4" />
+      {/* replay clip card */}
+      <rect x="30" y="30" width="340" height="150" rx="12" fill="#8EC48A" />
+      <circle cx="200" cy="105" r="26" fill="#FBFAF4" opacity="0.9" />
+      <path d="M193 93l18 12-18 12z" fill="#3C5A3E" />
+      <rect x="42" y="42" width="78" height="26" rx="13" fill="#F2A488" />
+      <text x="54" y="60" fontFamily="Inter" fontSize="13" fontWeight="800" fill="#FBFAF4">GOAL!</text>
+      <rect x="300" y="42" width="58" height="24" rx="12" fill="#3C5A3E" />
+      <text x="309" y="59" fontFamily="Inter" fontSize="11" fontWeight="700" fill="#FBFAF4">REPLAY</text>
+      {/* timeline with event markers */}
+      <rect x="30" y="214" width="340" height="6" rx="3" fill="#CFE7C4" />
+      {[
+        { x: 80, c: '#F2A488', label: 'Foul' }, { x: 170, c: '#5E9A5E', label: 'Goal' },
+        { x: 250, c: '#7FBBD6', label: 'Save' }, { x: 320, c: '#5E9A5E', label: 'Goal' },
+      ].map((m, i) => (
+        <g key={i}>
+          <circle cx={m.x} cy="217" r="8" fill={m.c} stroke="#FBFAF4" strokeWidth="2" />
+          <text x={m.x} y="244" textAnchor="middle" fontFamily="Inter" fontSize="11" fontWeight="700" fill="#3C5A3E">{m.label}</text>
+        </g>
+      ))}
+      <text x="30" y="268" fontFamily="Inter" fontSize="12" fontWeight="600" fill="#8A988B">Auto-detected key moments · one-tap clips</text>
+    </svg>
+  )
+}
+
+function Capabilities() {
+  return (
+    <section className="pad cap-band">
+      <div className="wrap center" style={{ marginBottom: 8 }}>
+        <span className="eyebrow">What HomerunAI does on the field</span>
+        <h2 className="section-title">Film it, call it, clip it</h2>
+        <p className="section-sub">Three things a full broadcast crew does — running automatically on your laptop.</p>
+      </div>
+      <div className="wrap">
+        <Showcase
+          id="switching"
+          eyebrow="Best-view switching"
+          title="Always on the camera that sees the play"
+          body="HomerunAI scores every feed frame by frame and cuts the live program to whichever phone has the clearest view of the ball and the action — with confidence margins and hold timers so cuts feel like a real director, not a nervous switch."
+          bullets={[
+            { ic: <IconTarget />, t: 'Per-frame confidence scoring across all cameras' },
+            { ic: <IconSwitch />, t: 'Smooth, anti-flicker cuts with hold timers' },
+            { ic: <IconRec />, t: 'One clean program feed to stream or record' },
+          ]}
+          visual={<SwitchVisual />}
+        />
+        <Showcase
+          id="commentary"
+          flip
+          eyebrow="AI commentary"
+          title="Play-by-play that sounds like a broadcast"
+          body="Because HomerunAI understands what's happening on the field, it can call the game in real time — announcing goals, shots, saves and big plays, and captioning the stream so every match feels professionally covered."
+          bullets={[
+            { ic: <IconMic />, t: 'Real-time, event-aware play-by-play' },
+            { ic: <IconAI />, t: 'Natural commentary tuned per sport' },
+            { ic: <IconClip />, t: 'Auto-captions burned into the broadcast' },
+          ]}
+          visual={<CommentaryVisual />}
+        />
+        <Showcase
+          id="replay"
+          eyebrow="Smart replay"
+          title="It knows the moment a goal is scored"
+          body="HomerunAI detects the moments that matter — a goal, a basket, a home run, a foul — the instant they happen, and instantly cuts a replay from the best angle. No scrubbing footage after the game: your highlights are already tagged and ready."
+          bullets={[
+            { ic: <IconReplay />, t: 'Auto-detects goals, baskets, home runs & fouls' },
+            { ic: <IconClip />, t: 'Instant best-angle replays, tagged as they happen' },
+            { ic: <IconTrend />, t: 'A ready-made highlight reel by the final whistle' },
+          ]}
+          visual={<ReplayVisual />}
+        />
+      </div>
+    </section>
+  )
+}
+
+/* ---------- Post-game analysis ---------- */
+
+function Analysis() {
+  const groups = [
+    {
+      ic: <IconChart className="" />, title: 'Team & tactics',
+      items: ['Possession % and possession by zone', 'Formation & team shape over time', 'Passing networks & completion %', 'Shot maps & expected goals (xG)', 'Pressing intensity & defensive line height', 'Transitions, turnovers & set pieces'],
+    },
+    {
+      ic: <IconRun className="" />, title: 'Physical & movement',
+      items: ['Total distance covered per player', 'Sprints & high-intensity runs', 'Top speed, acceleration & deceleration', 'Speed-zone distribution', 'Work-rate & fatigue trend across the game', 'Minutes & workload management'],
+    },
+    {
+      ic: <IconHeatmap className="" />, title: 'Player performance',
+      items: ['Per-player heatmaps & average position', 'Touches, involvements & time on ball', 'Goals, assists, key passes & shots', 'Tackles, interceptions, blocks & duels won', 'Pass completion per player', 'Individual event timelines'],
+    },
+    {
+      ic: <IconTarget className="" />, title: 'Ball & events',
+      items: ['Ball trajectory & speed', 'Full event timeline of the match', 'Auto-detected key moments', 'Momentum & scoring-chance graph', 'Zone & final-third entries', 'Shot / strike-zone location maps'],
+    },
+    {
+      ic: <IconClip className="" />, title: 'Clips & video',
+      items: ['Auto-generated highlight reels', 'Per-player & per-event clip reels', 'Searchable clips ("all shots by #10")', 'Shareable links for players & parents', 'Export to video, PDF & CSV', 'Coach-ready match summary'],
+    },
+    {
+      ic: <IconTrend className="" />, title: 'Trends & scouting',
+      items: ['Game-over-game & season dashboards', 'Player development tracking over time', 'Strengths & weaknesses breakdown', 'Opponent scouting reports', 'Benchmark vs. team averages', 'Training focus recommendations'],
+    },
+  ]
+  const perSport = [
+    { s: 'Soccer', m: 'xG, possession, passes, tackles, offsides, crosses, sprints, distance' },
+    { s: 'Basketball', m: 'points, rebounds, assists, FG%/3P%/FT%, shot chart, fast breaks, turnovers, steals, pace' },
+    { s: 'Baseball', m: 'pitch speed & type, exit velocity, launch angle, strike-zone map, at-bat outcomes, base running' },
+    { s: 'Football', m: 'rush/pass yards, completion %, play-type breakdown, formation recognition, yards after catch, drive summaries' },
+  ]
+  return (
+    <section className="pad analysis-band" id="analysis">
+      <div className="wrap center">
+        <span className="eyebrow">After the final whistle</span>
+        <h2 className="section-title">Detailed analysis coaches &amp; players can train on</h2>
+        <p className="section-sub">
+          Every game HomerunAI films becomes data. It turns hours of footage into a full analytics
+          report — automatically, no analyst required — so teams can see exactly what happened and get better.
+        </p>
+      </div>
+      <div className="wrap">
+        <div className="analysis-grid">
+          {groups.map((g) => (
+            <div className="analysis-card" key={g.title}>
+              <div className="analysis-head"><span className="ic">{g.ic}</span><h3>{g.title}</h3></div>
+              <ul>{g.items.map((it) => <li key={it}>{it}</li>)}</ul>
+            </div>
+          ))}
+        </div>
+
+        <div className="persport">
+          <h3>Metrics tuned to every sport</h3>
+          <div className="persport-grid">
+            {perSport.map((p) => (
+              <div className="persport-row" key={p.s}>
+                <span className="persport-sport">{p.s}</span>
+                <span className="persport-metrics">{p.m}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
 function Sports() {
   const sports = [
     { name: 'Soccer', tag: 'live', field: <SoccerField className="field-art" />, ball: <SoccerBall style={{ width: 28 }} />, desc: 'Ball tracking and auto-switching are live today, trained on real match footage.' },
@@ -412,6 +644,8 @@ export default function App() {
         <Hero />
         <Problem />
         <HowItWorks />
+        <Capabilities />
+        <Analysis />
         <Sports />
         <Features />
         <Downloads />
