@@ -238,7 +238,7 @@ function HowItWorks() {
           {steps.map((s) => (
             <div className="step" key={s.n}>
               <div className="art">{s.n === 'Step 03'
-                ? <div style={{ width: 96, height: 96, background: 'var(--field-100)', borderRadius: 24, display: 'flex', alignItems: 'center', justifyContent: 'center' }}><IconSwitch style={{ width: 46, height: 46 }} /></div>
+                ? <div className="step-badge"><IconSwitch /></div>
                 : s.art}</div>
               <div className="n">{s.n}</div>
               <h3>{s.title}</h3>

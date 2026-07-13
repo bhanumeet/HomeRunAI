@@ -228,6 +228,8 @@ h1, h2, h3 { line-height: 1.1; letter-spacing: -0.02em; font-weight: 800; }
   overflow: hidden;
 }
 .step .art { height: 120px; display: flex; align-items: center; justify-content: center; margin-bottom: 18px; }
+.step-badge { width: 96px; height: 96px; background: var(--field-100); border-radius: 24px; display: flex; align-items: center; justify-content: center; }
+.step-badge svg { width: 46px; height: 46px; }
 .step .n {
   font-size: 13px; font-weight: 800; color: var(--field-600);
   letter-spacing: 0.1em; text-transform: uppercase;
