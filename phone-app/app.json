@@ -1,0 +1,49 @@
+{
+  "expo": {
+    "name": "HomerunAI Camera",
+    "slug": "homerun-camera",
+    "version": "1.0.0",
+    "orientation": "landscape",
+    "userInterfaceStyle": "dark",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "backgroundColor": "#0d0d0d"
+    },
+    "ios": {
+      "bundleIdentifier": "ai.homerun.camera",
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSCameraUsageDescription": "HomerunAI streams this camera angle to the director.",
+        "NSMicrophoneUsageDescription": "HomerunAI streams audio along with this camera angle.",
+        "NSLocalNetworkUsageDescription": "HomerunAI streams video to the director on your local Wi-Fi network.",
+        "UIRequiresPersistentWiFi": true
+      }
+    },
+    "android": {
+      "package": "ai.homerun.camera",
+      "permissions": [
+        "CAMERA",
+        "RECORD_AUDIO",
+        "INTERNET",
+        "ACCESS_NETWORK_STATE",
+        "WAKE_LOCK"
+      ]
+    },
+    "plugins": [
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "HomerunAI uses the camera to stream this angle to the director.",
+          "microphonePermission": "HomerunAI streams audio along with this camera angle."
+        }
+      ],
+      [
+        "expo-build-properties",
+        {
+          "android": { "usesCleartextTraffic": true, "minSdkVersion": 24 },
+          "ios": { "deploymentTarget": "15.1" }
+        }
+      ]
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+# MediaMTX — local media router for phone camera streams.
+# Phones PUBLISH to this laptop; the director PULLS from it (localhost).
+# Accepts RTMP / RTSP / SRT / WebRTC publishing on any path name (cam1, cam2, …).
+
+logLevel: info
+
+# Control API so we can inspect exactly what a phone publishes.
+api: yes
+apiAddress: 127.0.0.1:9997
+
+# Listen addresses (phones connect to <laptop-ip>:<port>).
+rtmpAddress: :1935      # easiest for phone apps to publish to
+rtspAddress: :8554      # director pulls from here (rtsp://127.0.0.1:8554/camN)
+srtAddress: :8890       # optional, better over flaky Wi-Fi
+webrtcAddress: :8889    # optional
+
+# Keep buffers small so live latency stays low.
+readBufferCount: 512
+
+paths:
+  # Allow any path to be published without pre-configuring each one.
+  all_others:

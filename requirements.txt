@@ -1,0 +1,12 @@
+# HomerunAI Director — Python "brain"
+# Install into a Python 3.11 venv (torch/rfdetr have no 3.14 wheels yet).
+
+rfdetr>=1.0.0          # RF-DETR model (pulls in torch/torchvision)
+supervision>=0.20.0    # Detections container returned by rfdetr.predict()
+opencv-python>=4.8.0   # RTSP/file ingest + drawing
+numpy>=1.24.0
+pillow>=10.0.0         # rfdetr.predict() takes PIL images
+PySide6>=6.6.0         # native desktop UI (Qt)
+PyYAML>=6.0
+huggingface_hub>=0.20.0  # model checkpoint download
+qrcode>=7.4             # phone-pairing QR codes shown in the director UI

@@ -1,0 +1,31 @@
+# LIVE config — phones streaming through MediaMTX on this laptop.
+# Run:  python -m app.main --config config.live.yaml
+#
+# Each phone publishes to  rtmp://<laptop-ip>:1935/camN  (or rtsp .../camN),
+# and the director pulls the same path back from MediaMTX over localhost.
+# Cameras you haven't connected yet just show "waiting for stream".
+
+cameras:
+  - id: cam1
+    name: "Camera 1"
+    source: "rtsp://127.0.0.1:8554/live/cam1"
+  - id: cam2
+    name: "Camera 2"
+    source: "rtsp://127.0.0.1:8554/live/cam2"
+  - id: cam3
+    name: "Camera 3"
+    source: "rtsp://127.0.0.1:8554/live/cam3"
+  - id: cam4
+    name: "Camera 4"
+    source: "rtsp://127.0.0.1:8554/live/cam4"
+
+model:
+  weights: "weights/checkpoint_best_regular.pth"
+  device: "auto"
+  ball_threshold: 0.3
+  infer_width: 0
+
+switching:
+  margin: 0.08
+  hold_seconds: 0.8
+  min_confidence: 0.3
