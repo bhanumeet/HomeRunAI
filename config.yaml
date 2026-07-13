@@ -1,0 +1,35 @@
+# HomerunAI Director configuration
+#
+# Each camera is a video source. For real phones, publish RTSP/RTMP to MediaMTX
+# (see README) and point `source` at the pulled stream, e.g.
+#   source: "rtsp://127.0.0.1:8554/cam1"
+# For local testing without phones, point `source` at a video file path.
+
+cameras:
+  - id: cam1
+    name: "Camera 1 — Wide Left"
+    source: "samples/cam1.mp4"
+  - id: cam2
+    name: "Camera 2 — Wide Right"
+    source: "samples/cam2.mp4"
+  - id: cam3
+    name: "Camera 3 — Behind Goal"
+    source: "samples/cam3.mp4"
+  - id: cam4
+    name: "Camera 4 — Halfway Line"
+    source: "samples/cam4.mp4"
+
+model:
+  weights: "weights/checkpoint_best_regular.pth"
+  device: "auto"          # auto | cpu | cuda | mps
+  ball_threshold: 0.3     # ball class threshold (model author recommends 0.4 for
+                          # broadcast footage; lower for phone/amateur angles)
+  infer_width: 0          # 0 = native res (best). RF-DETR resizes to 560 internally,
+                          # so pre-downscaling only hurts small-ball detection.
+
+# AI director: pick the camera with the highest ball confidence, with smoothing
+# so we don't cut on every frame.
+switching:
+  margin: 0.08            # candidate must beat the live cam's confidence by this much
+  hold_seconds: 0.8       # ...and stay ahead this long before we cut
+  min_confidence: 0.3     # ignore cameras below this (no ball -> not eligible)

@@ -1,0 +1,28 @@
+# Switching test: phone (cam1) vs Mac webcam (cam2, default resting shot).
+#
+# Phone publishes to:  rtmp://<laptop-ip>:1935/live/cam1   (two-segment path)
+# Director pulls it from MediaMTX at rtsp://127.0.0.1:8554/live/cam1.
+# The webcam (cam2) is shown whenever no ball is detected; when your phone
+# sees a ball, the program cuts to cam1.
+#
+# Run:  ./start_test.sh   (grant the macOS camera prompt: Allow)
+
+cameras:
+  - id: cam1
+    name: "Phone (RTMP)"
+    source: "rtsp://127.0.0.1:8554/live/cam1"
+  - id: cam2
+    name: "Mac Webcam (default)"
+    source: 0
+
+model:
+  weights: "weights/checkpoint_best_regular.pth"
+  device: "auto"
+  ball_threshold: 0.3
+  infer_width: 0
+
+switching:
+  margin: 0.08
+  hold_seconds: 0.8
+  min_confidence: 0.3
+  default_cam: cam2      # rest on the webcam when no ball is in view

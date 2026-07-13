@@ -1,0 +1,30 @@
+# Instant demo — Mac's built-in webcam as cam1, sample clips as cam2-4.
+# Proves the whole live pipeline (real camera -> detection -> auto-switch) with
+# no phone/streaming at all. Run:
+#     python -m app.main --config config.webcam.yaml
+# macOS will ask for camera permission the first time — click Allow.
+
+cameras:
+  - id: cam1
+    name: "Mac Webcam (live)"
+    source: 0
+  - id: cam2
+    name: "Clip — Wide Right"
+    source: "samples/cam2.mp4"
+  - id: cam3
+    name: "Clip — Behind Goal"
+    source: "samples/cam3.mp4"
+  - id: cam4
+    name: "Clip — Halfway"
+    source: "samples/cam4.mp4"
+
+model:
+  weights: "weights/checkpoint_best_regular.pth"
+  device: "auto"
+  ball_threshold: 0.3
+  infer_width: 0
+
+switching:
+  margin: 0.08
+  hold_seconds: 0.8
+  min_confidence: 0.3
