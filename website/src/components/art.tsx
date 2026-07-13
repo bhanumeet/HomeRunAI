@@ -334,6 +334,14 @@ export function IconTrend({ className }: P) {
     </svg>
   )
 }
+export function IconCheck({ className }: P) {
+  return (
+    <svg viewBox="0 0 20 20" className={className} aria-hidden>
+      <circle cx="10" cy="10" r="9" fill="#CFE7C4" />
+      <path d="M6 10.5l2.6 2.6L14 7.5" stroke="#3C5A3E" strokeWidth="2.2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  )
+}
 export function IconReplay({ className }: P) {
   return (
     <svg viewBox="0 0 32 32" className={className} aria-hidden>

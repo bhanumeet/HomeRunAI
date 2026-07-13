@@ -74,7 +74,10 @@
       "Bash('/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --headless --disable-gpu --hide-scrollbars --window-size=1440,6200 --screenshot=/private/tmp/claude-501/-Users-meetanilbhanushali-Desktop-HomerunAIReact/9666325b-ece2-4aa0-a44b-c10832919d60/scratchpad/full.png http://localhost:5173/)",
       "Bash(sips -g pixelHeight /private/tmp/claude-501/-Users-meetanilbhanushali-Desktop-HomerunAIReact/9666325b-ece2-4aa0-a44b-c10832919d60/scratchpad/full.png)",
       "Bash(python3 *)",
-      "Bash(git commit -q -m 'Add generation prompts for capability + analysis visuals \\(C1-C5, V6\\) *)"
+      "Bash(git commit -q -m 'Add generation prompts for capability + analysis visuals \\(C1-C5, V6\\) *)",
+      "Bash('/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --headless=new --disable-gpu --hide-scrollbars --window-size=390,1600 --force-device-scale-factor=1 --screenshot=/private/tmp/claude-501/-Users-meetanilbhanushali-Desktop-HomerunAIReact/9666325b-ece2-4aa0-a44b-c10832919d60/scratchpad/phone2.png http://localhost:5173/)",
+      "Bash('/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --headless=new --disable-gpu --hide-scrollbars --window-size=390,1600 --force-device-scale-factor=1 --screenshot=/private/tmp/claude-501/-Users-meetanilbhanushali-Desktop-HomerunAIReact/9666325b-ece2-4aa0-a44b-c10832919d60/scratchpad/phone2b.png 'http://localhost:5173/#overview')",
+      "Bash(sips -g pixelWidth /private/tmp/claude-501/-Users-meetanilbhanushali-Desktop-HomerunAIReact/9666325b-ece2-4aa0-a44b-c10832919d60/scratchpad/phone2.png)"
     ]
   }
 }
