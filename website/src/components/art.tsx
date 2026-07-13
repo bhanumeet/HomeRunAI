@@ -252,3 +252,31 @@ export function IconRec({ className }: P) {
     </svg>
   )
 }
+export function IconMic({ className }: P) {
+  return (
+    <svg viewBox="0 0 32 32" className={className} aria-hidden>
+      <rect x="12" y="4" width="8" height="15" rx="4" fill="#F2A488" />
+      <path d="M8 15a8 8 0 0 0 16 0" stroke="#5E9A5E" strokeWidth="2.4" fill="none" strokeLinecap="round" />
+      <path d="M16 23v5M12 28h8" stroke="#5E9A5E" strokeWidth="2.4" strokeLinecap="round" />
+    </svg>
+  )
+}
+export function IconTruck({ className }: P) {
+  return (
+    <svg viewBox="0 0 32 32" className={className} aria-hidden>
+      <rect x="3" y="9" width="16" height="12" rx="2" fill="#C9CFC7" />
+      <path d="M19 13h5l4 4v4h-9z" fill="#AEB6AB" />
+      <circle cx="9" cy="23" r="3" fill="#7C877D" />
+      <circle cx="23" cy="23" r="3" fill="#7C877D" />
+    </svg>
+  )
+}
+export function IconWallet({ className }: P) {
+  return (
+    <svg viewBox="0 0 32 32" className={className} aria-hidden>
+      <rect x="5" y="8" width="22" height="16" rx="3" fill="#C9CFC7" />
+      <rect x="18" y="14" width="9" height="5" rx="2.5" fill="#AEB6AB" />
+      <circle cx="22.5" cy="16.5" r="1.4" fill="#7C877D" />
+    </svg>
+  )
+}
