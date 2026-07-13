@@ -73,7 +73,8 @@
       "Bash('/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --headless --disable-gpu --hide-scrollbars --window-size=1440,2600 --screenshot=/private/tmp/claude-501/-Users-meetanilbhanushali-Desktop-HomerunAIReact/9666325b-ece2-4aa0-a44b-c10832919d60/scratchpad/lower.png 'http://localhost:5173/#analysis')",
       "Bash('/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --headless --disable-gpu --hide-scrollbars --window-size=1440,6200 --screenshot=/private/tmp/claude-501/-Users-meetanilbhanushali-Desktop-HomerunAIReact/9666325b-ece2-4aa0-a44b-c10832919d60/scratchpad/full.png http://localhost:5173/)",
       "Bash(sips -g pixelHeight /private/tmp/claude-501/-Users-meetanilbhanushali-Desktop-HomerunAIReact/9666325b-ece2-4aa0-a44b-c10832919d60/scratchpad/full.png)",
-      "Bash(python3 *)"
+      "Bash(python3 *)",
+      "Bash(git commit -q -m 'Add generation prompts for capability + analysis visuals \\(C1-C5, V6\\) *)"
     ]
   }
 }
