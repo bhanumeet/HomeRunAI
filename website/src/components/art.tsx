@@ -280,3 +280,66 @@ export function IconWallet({ className }: P) {
     </svg>
   )
 }
+export function IconChart({ className }: P) {
+  return (
+    <svg viewBox="0 0 32 32" className={className} aria-hidden>
+      <path d="M5 27h22" stroke="#5E9A5E" strokeWidth="2.4" strokeLinecap="round" />
+      <rect x="7" y="16" width="4" height="9" rx="1.5" fill="#8EC48A" />
+      <rect x="14" y="10" width="4" height="15" rx="1.5" fill="#5E9A5E" />
+      <rect x="21" y="6" width="4" height="19" rx="1.5" fill="#F2A488" />
+    </svg>
+  )
+}
+export function IconHeatmap({ className }: P) {
+  return (
+    <svg viewBox="0 0 32 32" className={className} aria-hidden>
+      <rect x="4" y="6" width="24" height="20" rx="3" fill="#EAF4E4" />
+      <circle cx="12" cy="14" r="7" fill="#8EC48A" opacity="0.6" />
+      <circle cx="14" cy="16" r="4.5" fill="#F2A488" opacity="0.8" />
+      <circle cx="21" cy="19" r="4" fill="#A9D69C" opacity="0.6" />
+    </svg>
+  )
+}
+export function IconRun({ className }: P) {
+  return (
+    <svg viewBox="0 0 32 32" className={className} aria-hidden>
+      <circle cx="19" cy="7" r="3" fill="#F2A488" />
+      <path d="M17 12l-5 3 3 3-1 7M17 12l4 2 4-1M14 18l-5 1" stroke="#5E9A5E" strokeWidth="2.4" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  )
+}
+export function IconTarget({ className }: P) {
+  return (
+    <svg viewBox="0 0 32 32" className={className} aria-hidden>
+      <circle cx="16" cy="16" r="11" fill="none" stroke="#8EC48A" strokeWidth="2.4" />
+      <circle cx="16" cy="16" r="6" fill="none" stroke="#5E9A5E" strokeWidth="2.4" />
+      <circle cx="16" cy="16" r="2" fill="#F2A488" />
+    </svg>
+  )
+}
+export function IconClip({ className }: P) {
+  return (
+    <svg viewBox="0 0 32 32" className={className} aria-hidden>
+      <rect x="4" y="8" width="24" height="16" rx="3" fill="#8EC48A" />
+      <path d="M4 12h24M9 8l-2 4M15 8l-2 4M21 8l-2 4" stroke="#3C5A3E" strokeWidth="1.6" />
+      <path d="M15 15l5 3-5 3z" fill="#FBFAF4" />
+    </svg>
+  )
+}
+export function IconTrend({ className }: P) {
+  return (
+    <svg viewBox="0 0 32 32" className={className} aria-hidden>
+      <path d="M5 22l7-7 4 4 9-10" stroke="#5E9A5E" strokeWidth="2.6" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M22 9h5v5" stroke="#F2A488" strokeWidth="2.6" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  )
+}
+export function IconReplay({ className }: P) {
+  return (
+    <svg viewBox="0 0 32 32" className={className} aria-hidden>
+      <path d="M25 16a9 9 0 1 1-3-6.7" stroke="#5E9A5E" strokeWidth="2.6" fill="none" strokeLinecap="round" />
+      <path d="M22 5v5h-5" stroke="#5E9A5E" strokeWidth="2.6" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+      <circle cx="16" cy="16" r="3" fill="#F2A488" />
+    </svg>
+  )
+}
