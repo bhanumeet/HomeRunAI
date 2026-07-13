@@ -5,33 +5,53 @@ import {
   Phone, Laptop,
   WindowsIcon, AppleIcon, AppStoreBadge,
   IconAI, IconSwitch, IconPhoneUp, IconBolt, IconWifi, IconRec, IconMic, IconTruck, IconWallet,
-  IconChart, IconHeatmap, IconRun, IconTarget, IconClip, IconTrend, IconReplay,
+  IconChart, IconHeatmap, IconRun, IconTarget, IconClip, IconTrend, IconReplay, IconCheck,
 } from './components/art'
 
 function Logo() {
   return <img className="logo" src="/logo.png" alt="HomerunAI logo" width={36} height={36} />
 }
 
+const NAV_LINKS: [string, string][] = [
+  ['#problem', 'Why'],
+  ['#how', 'How it works'],
+  ['#sports', 'Sports'],
+  ['#replay', 'Replay'],
+  ['#analysis', 'Analysis'],
+  ['#download', 'Download'],
+]
+
 function Nav() {
+  const [open, setOpen] = useState(false)
+  const close = () => setOpen(false)
   return (
     <header className="nav">
       <div className="wrap nav-inner">
-        <a className="brand" href="#top">
+        <a className="brand" href="#top" onClick={close}>
           <Logo />
           <span>Homerun<b>AI</b></span>
         </a>
         <nav className="nav-links">
-          <a href="#problem">Why</a>
-          <a href="#how">How it works</a>
-          <a href="#sports">Sports</a>
-          <a href="#replay">Replay</a>
-          <a href="#analysis">Analysis</a>
-          <a href="#download">Download</a>
+          {NAV_LINKS.map(([h, l]) => <a key={h} href={h}>{l}</a>)}
         </nav>
         <div className="nav-cta">
-          <a className="btn btn-primary" href="#download">Get HomerunAI</a>
+          <a className="btn btn-primary desktop-cta" href="#download">Get HomerunAI</a>
+          <button
+            className={`nav-toggle ${open ? 'is-open' : ''}`}
+            aria-label="Toggle menu"
+            aria-expanded={open}
+            onClick={() => setOpen((o) => !o)}
+          >
+            <span /><span /><span />
+          </button>
         </div>
       </div>
+      {open && (
+        <div className="nav-mobile">
+          {NAV_LINKS.map(([h, l]) => <a key={h} href={h} onClick={close}>{l}</a>)}
+          <a className="btn btn-primary" href="#download" onClick={close}>Get HomerunAI</a>
+        </div>
+      )}
     </header>
   )
 }
@@ -202,6 +222,57 @@ function Problem() {
             <div className="set-forget">Set up the phones and forget it — HomerunAI does the rest.</div>
           </div>
         </div>
+      </div>
+    </section>
+  )
+}
+
+function Overview() {
+  const groups = [
+    {
+      title: 'Capture', href: '#how', ic: <IconPhoneUp />,
+      items: ['Any phone becomes a wireless camera', 'Set up in seconds — just prop & go', 'Runs on your Wi-Fi, fully local & private', 'Add one phone or many'],
+    },
+    {
+      title: 'Broadcast live', href: '#switching', ic: <IconSwitch />,
+      items: ['Best-view auto-switching', 'Broadcast-style smooth cuts', 'AI play-by-play commentary', 'Live auto-captions', 'One clean program feed to stream or record'],
+    },
+    {
+      title: 'Replay & highlights', href: '#replay', ic: <IconReplay />,
+      items: ['Detects goals, baskets, home runs & fouls', 'Instant best-angle replays', 'Auto-built highlight reel', 'Key moments tagged as they happen'],
+    },
+    {
+      title: 'After the game', href: '#analysis', ic: <IconChart />,
+      items: ['Full post-game analytics report', 'Player heatmaps & position tracking', 'Physical & movement stats', 'Per-sport metrics', 'Trends, development & scouting reports'],
+    },
+  ]
+  return (
+    <section className="pad-sm overview-band" id="overview">
+      <div className="wrap center">
+        <span className="eyebrow">Everything in one app</span>
+        <h2 className="section-title">Everything HomerunAI does</h2>
+        <p className="section-sub">From kickoff to the post-game report — no crew, no extra gear.</p>
+      </div>
+      <div className="wrap">
+        <div className="overview-grid">
+          {groups.map((g) => (
+            <a className="overview-col" href={g.href} key={g.title}>
+              <div className="overview-head"><span className="ic">{g.ic}</span><h3>{g.title}</h3></div>
+              <ul>
+                {g.items.map((it) => (
+                  <li key={it}><IconCheck className="chk" />{it}</li>
+                ))}
+              </ul>
+            </a>
+          ))}
+        </div>
+        <a className="overview-sports" href="#sports">
+          <span>Works across</span>
+          <SoccerBall style={{ width: 24 }} /> Soccer
+          <Baseball style={{ width: 24 }} /> Baseball
+          <Football style={{ width: 24 }} /> Football
+          <Basketball style={{ width: 24 }} /> Basketball
+        </a>
       </div>
     </section>
   )
@@ -643,6 +714,7 @@ export default function App() {
       <main>
         <Hero />
         <Problem />
+        <Overview />
         <HowItWorks />
         <Sports />
         <Features />
