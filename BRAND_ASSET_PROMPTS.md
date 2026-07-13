@@ -286,6 +286,74 @@ on a cream background, each with its ball rolling in from the side. Flat, palett
 
 ---
 
+# C. CAPABILITY & ANALYSIS SECTION VISUALS
+
+> These replace the inline SVG mockups in the "Film it, call it, clip it" showcase rows and the
+> "Detailed analysis" section. Keep them as **flat-UI product mockups** (higher fidelity than the
+> icon spots, but still matte/flat) with placeholder line-shapes instead of real text.
+
+### C1 — Best-view switching · 4:3 · pale-green panel
+```
+[STYLE BLOCK, flat-UI]
+A flat product mockup on a pale #EAF4E4 rounded panel. On the left, a vertical stack of four small
+camera-feed tiles (green, sky-blue, clay, green); each has a thin confidence bar beneath it, and the
+bottom tile is highlighted with a coral #F2A488 border + a small coral LIVE dot. A dotted green signal
+line curves from the highlighted tile to a large "LIVE PROGRAM" view on the right (green field, coral
+border, coral LIVE pill). Conveys: the AI auto-selects the best angle. No real text, use placeholder bars.
+```
+
+### C2 — AI commentary · 4:3 · pale-green panel
+```
+[STYLE BLOCK, flat-UI]
+A flat product mockup on a pale #EAF4E4 rounded panel. A pastel sports broadcast frame with a
+deep-green "lower-third" caption bar across the bottom: a small coral #F2A488 microphone on the left,
+placeholder caption lines (#CFE7C4 bars), and a sun-yellow #F6E2A0 audio waveform (equalizer bars) on
+the right. Below the frame, a soft speech bubble with two placeholder text lines and a small "AI ·
+play-by-play" tag. Warm, broadcast feel, no real text.
+```
+
+### C3 — Smart replay · 4:3 · pale-green panel
+```
+[STYLE BLOCK, flat-UI]
+A flat product mockup on a pale #EAF4E4 rounded panel. A green replay video card with a white circular
+play button in the center, a coral #F2A488 "GOAL!" pill in the top-left, and a deep-green "REPLAY" pill
+in the top-right. Below it, a horizontal timeline (#CFE7C4 track) with four event markers — coral, green,
+sky-blue, green dots — labeled with tiny placeholder tags for Foul / Goal / Save / Goal. Caption idea:
+"auto-detected key moments." Conveys instant event-aware highlight clipping. No real text.
+```
+
+### C4 — Analysis dashboard (hero visual for the Analysis section) · 16:10
+```
+[STYLE BLOCK, flat-UI dashboard]
+A clean flat analytics dashboard on cream #FBFAF4. Composed of soft rounded cards: (1) a player HEATMAP
+card — a top-down pastel pitch with soft coral/green blurred hotspots; (2) a flat BAR CHART card (green
++ coral bars, no gridline clutter); (3) a small PASSING-NETWORK card (green nodes connected by thin lines
+over a mini pitch); (4) three STAT TILES with a big number placeholder + label bar each; (5) a small line
+TREND card trending up in coral. Matte flat, thin outlines, generous spacing, no real text — placeholder
+number/label shapes only. Feels like a friendly coach's report, not a Bloomberg terminal.
+```
+
+### C5 — Individual analysis motifs (1:1 each, pale-green square bg) — optional
+> Use these if you want a distinct icon per analysis card instead of the current simple icons.
+```
+[STYLE BLOCK] Square icons, one motif each, thin outlines, green + coral accent, #EAF4E4 bg:
+  • Team & tactics — a mini pitch with formation dots + one arrow
+  • Physical & movement — a running-figure glyph with a speed streak
+  • Player performance — a player heatmap blob on a mini pitch
+  • Ball & events — a target reticle on a ball + a small timeline
+  • Clips & video — a filmstrip with a play triangle
+  • Trends & scouting — an upward line chart with an arrow
+```
+
+### V6 — Analysis reveal loop (optional, ~5s Lottie) — *motion brief*
+```
+The C4 dashboard assembles itself: heatmap hotspots bloom in, bar chart bars grow up from the axis,
+the trend line draws left-to-right, stat-tile numbers count up. Flat, palette-locked, seamless, 30fps,
+transparent bg. Calm, satisfying, "your report is ready" feeling.
+```
+
+---
+
 ## Suggested file names / drop-in map
 | Asset | File | Used in |
 |---|---|---|
@@ -295,6 +363,9 @@ on a cream background, each with its ball rolling in from the side. Flat, palett
 | A11/A12 | `problem-big.svg`,`problem-grassroots.svg` | Problem section |
 | A13–A18 | `feat-*.svg` | Features grid |
 | A19/A20 | `mockup-director.png`,`mockup-camera.png` | Download / product |
+| C1–C3 | `cap-switching.svg`,`cap-commentary.svg`,`cap-replay.svg` | "Film it, call it, clip it" rows |
+| C4/V6 | `analysis-dashboard.(svg\|json)` | Analysis section visual |
+| C5 | `analysis-*.svg` | Analysis card icons (optional) |
 | A3 | `og.png` (1200×630) | `<meta og:image>` |
 
 > Tip: generate illustrations as **SVG** (Recraft) when possible — they scale crisply, stay tiny,
